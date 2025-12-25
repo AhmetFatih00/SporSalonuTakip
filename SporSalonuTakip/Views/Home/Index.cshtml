@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm"
+     style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1470'); background-size: cover; background-position: center; position: relative;">
+
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); border-radius: 0.3rem;"></div>
+
+    <div class="container-fluid py-5 position-relative text-white">
+        <h1 class="display-4 fw-bold">KnudarrFit Gym'e Hoşgeldiniz</h1>
+        <p class="col-md-8 fs-4">Üye takibi, abonelik yönetimi ve antreman programları tek bir noktada!</p>
+
+        @if (HttpContextAccessor.HttpContext.Session.GetString("UserRole") == "Admin")
+        {
+            <a asp-controller="Members" asp-action="Index" class="btn btn-primary btn-lg">🚀 Yönetim Paneli</a>
+        }
+        else
+        {
+            <a asp-controller="Members" asp-action="Plans" class="btn btn-primary btn-lg">🚀 Hemen Başla</a>
+        }
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-12">
+        <div class="h-100 p-5 text-white bg-dark rounded-3 shadow">
+
+            @if (HttpContextAccessor.HttpContext.Session.GetString("UserRole") == "Admin")
+            {
+                // --- SENARYO 1: ADMİN GİRİŞ YAPMIŞSA ---
+                <h2>⚙️ Üye Yönetimi</h2>
+                <p class="fs-5">Salonunuza kayıtlı tüm üyelerin listesini görüntüleyin, abonelik sürelerini kontrol edin, düzenleyin veya silin.</p>
+                <a asp-controller="Members" asp-action="Index" class="btn btn-outline-light btn-lg mt-2">Yönetim Paneli</a>
+            }
+            else
+            {
+                // --- SENARYO 2: NORMAL VATANDAŞ İSE ---
+                <h2>🚀 Aramıza Katıl</h2>
+                <p class="fs-5">Henüz üye değil misin? Sana en uygun paketi seçerek KnudarrFit ailesinin bir parçası ol ve değişime bugün başla!</p>
+                <a asp-controller="Members" asp-action="Plans" class="btn btn-primary text-white fw-bold shadow-sm btn-lg mt-2">
+                    Paketleri İncele & Kayıt Ol
+                </a>
+            }
+
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="h-100 p-5 text-white bg-primary rounded-3 shadow">
+            <h2>💪 Antrenmanlar</h2>
+            <p class="fs-5">Üyeler için hazırlanan özel antrenman programlarına göz atın. Hedefinize en uygun programı seçin.</p>
+            <a asp-controller="Programs" asp-action="Index" class="btn btn-light text-primary fw-bold btn-lg mt-2">
+                Programlara Göz At
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mt-5 mb-5">
+    <div class="col-md-6">
+        <h3>Neden KnudarrFit Gym Sistemi?</h3>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-transparent">✅ Hızlı ve Kolay Üye Kaydı</li>
+            <li class="list-group-item bg-transparent">✅ Mobil Uyumlu Arayüz</li>
+            <li class="list-group-item bg-transparent">✅ Güvenli Veritabanı</li>
+            <li class="list-group-item bg-transparent">✅ 7/24 Erişim İmkanı</li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&q=80&w=1000"
+             class="img-fluid rounded shadow-sm" alt="Spor Salonu Detay">
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Üyelik Paketleri";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Üyelik Paketini Seç</h1>
+        <p class="text-muted">Sana en uygun planı seç, değişime hemen başla.</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+
+        <div class="col">
+            <div class="card h-100 shadow border-primary border-2">
+                <div class="card-header bg-white text-center py-4">
+                    <h4 class="fw-bold text-primary">Aylık Standart</h4>
+                </div>
+                <div class="card-body text-center">
+                    <h1 class="display-4 fw-bold">3.000₺<small class="text-muted fs-6">/ay</small></h1>
+                    <ul class="list-unstyled mt-4 text-start mx-auto" style="max-width: 200px;">
+                        <li class="mb-2">✔ Sınırsız Salon Kullanımı</li>
+                        <li class="mb-2">✔ Temel Antrenman Programı</li>
+                        <li class="mb-2 text-muted">✖ Özel Hoca Desteği</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-4 text-center">
+                    <a asp-action="Create" asp-route-plan="Aylık Standart" asp-route-price="3000" class="btn btn-outline-primary w-75 rounded-pill">Seç ve Devam Et</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 shadow border-success border-2 transform-scale">
+                <div class="card-header bg-success text-white text-center py-4">
+                    <h4 class="fw-bold">3 Aylık İndirimli</h4>
+                    <span class="badge bg-warning text-dark">Popüler</span>
+                </div>
+                <div class="card-body text-center">
+                    <h1 class="display-4 fw-bold">7.000₺<small class="text-muted fs-6">/3ay</small></h1>
+                    <p class="text-success fw-bold">2000₺ Tasarruf!</p>
+                    <ul class="list-unstyled mt-4 text-start mx-auto" style="max-width: 200px;">
+                        <li class="mb-2">✔ Tüm Aylık Özellikler</li>
+                        <li class="mb-2">✔ Ölçüm ve Analiz</li>
+                        <li class="mb-2">✔ Dondurma Hakkı (15 Gün)</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-4 text-center">
+                    <a asp-action="Create" asp-route-plan="3 Aylık İndirimli" asp-route-price="7000" class="btn btn-success w-75 rounded-pill btn-lg">Seç ve Devam Et</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 shadow border-warning border-2">
+                <div class="card-header bg-white text-center py-4">
+                    <h4 class="fw-bold text-warning">Yıllık Gold</h4>
+                </div>
+                <div class="card-body text-center">
+                    <h1 class="display-4 fw-bold">30.000₺<small class="text-muted fs-6">/yıl</small></h1>
+                    <ul class="list-unstyled mt-4 text-start mx-auto" style="max-width: 200px;">
+                        <li class="mb-2">✔ Her Şey Dahil</li>
+                        <li class="mb-2">✔ VIP Soyunma Odası</li>
+                        <li class="mb-2">✔ Ücretsiz Havlu & Su</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-4 text-center">
+                    <a asp-action="Create" asp-route-plan="Yıllık Gold" asp-route-price="30000" class="btn btn-outline-warning text-dark w-75 rounded-pill">Seç ve Devam Et</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

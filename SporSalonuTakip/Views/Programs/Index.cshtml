@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Antrenman Programları";
+}
+
+<div class="container-md mt-5" style="max-width: 960px;">
+
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">🔥 Antrenman Programları</h1>
+        <p class="lead text-muted">Hedefine en uygun programı seç ve değişime başla.</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-3 justify-content-center">
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=1470" class="card-img-top" alt="Kas Kazanımı" style="height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h4 class="card-title fw-bold">Hypertrophy (Kas İnşası)</h4>
+                    <span class="badge bg-warning text-dark mb-2">Orta Seviye</span>
+                    <p class="card-text">Vücut hacmini artırmak ve kas kütlesini maksimize etmek isteyenler için tasarlanmış 4 günlük split program.</p>
+                </div>
+                <div class="card-footer bg-white border-0">
+                    <a asp-controller="Programs" asp-action="Hypertrophy" class="btn btn-outline-dark w-100">Programı İncele</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+                <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop" class="card-img-top" alt="Yağ Yakımı" style="height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h4 class="card-title fw-bold">HIIT & Cardio Burn</h4>
+                    <span class="badge bg-danger mb-2">Yüksek Yoğunluk</span>
+                    <p class="card-text">Kısa sürede maksimum kalori yakmayı hedefleyen, kondisyon artırıcı yoğun antrenman serisi.</p>
+                </div>
+                <div class="card-footer bg-white border-0">
+                    <a asp-controller="Programs" asp-action="FatLoss" class="btn btn-outline-dark w-100">Programı İncele</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=1470" class="card-img-top" alt="Başlangıç" style="height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h4 class="card-title fw-bold">Full Body Start</h4>
+                    <span class="badge bg-success mb-2">Başlangıç</span>
+                    <p class="card-text">Spora yeni başlayanlar için tüm vücut kaslarını çalıştıran, temel hareketlerden oluşan adaptasyon programı.</p>
+                </div>
+                <div class="card-footer bg-white border-0">
+                    <a asp-controller="Programs" asp-action="FullBody" class="btn btn-outline-dark w-100">Programı İncele</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

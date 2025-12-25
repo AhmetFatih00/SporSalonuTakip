@@ -1,0 +1,148 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    // Şu anki sayfa bilgisini al (Menüde altını çizmek için)
+    string currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+    string currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
+
+    // Aktif link stili
+    string activeStyle = "color: #0d6efd !important; border-bottom: 3px solid #0d6efd !important;";
+    string passiveStyle = "";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - KnudarrFit Gym</title>
+
+    <link rel="icon" type="image/png" href="~/favicon.png">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <style>
+        /* 1. ARKA PLAN AYARLARI (Opak Beyaz Perdeli) */
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1470');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        /* 2. NAVİGASYON BAR (Buzlu Cam Efekti) */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.80) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* 3. MENÜ LİNKLERİ (Zıplamayı Engelleyen Kod) */
+        .navbar-nav .nav-link {
+            border-bottom: 3px solid transparent !important; /* Görünmez çizgi (yer tutucu) */
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500; /* Yazılar biraz tok dursun */
+        }
+
+            /* Fare üzerine gelince */
+            .navbar-nav .nav-link:hover {
+                color: #0d6efd !important;
+                border-bottom: 3px solid #0d6efd !important;
+            }
+
+        /* Footer Ayarı */
+        footer {
+            background-color: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-primary fs-4" asp-area="" asp-controller="Home" asp-action="Index">
+                    KnudarrFit Gym
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 gap-3 ms-4">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" style="@(currentController == "Home" && currentAction == "Index" ? activeStyle : passiveStyle)"
+                               asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" style="@(currentController == "Programs" ? activeStyle : passiveStyle)"
+                               asp-area="" asp-controller="Programs" asp-action="Index">Programlar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" style="@(currentController == "Inquiry" ? activeStyle : passiveStyle)"
+                               asp-area="" asp-controller="Inquiry" asp-action="Index">Üyelik Sorgula</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" style="@(currentController == "Home" && currentAction == "Privacy" ? activeStyle : passiveStyle)"
+                               asp-area="" asp-controller="Home" asp-action="Privacy">Gizlilik</a>
+                        </li>
+
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("UserRole") == "Admin")
+                        {
+                            <li class="nav-item ps-3 border-start">
+                                <a class="nav-link text-danger fw-bold" asp-controller="Members" asp-action="Index">⚙️ Yönetim Paneli</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-muted" asp-controller="Account" asp-action="Logout">Çıkış Yap</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-primary btn-sm mt-1 text-white shadow-sm" asp-controller="Members" asp-action="Plans">Kayıt Ol</a>
+                            </li>
+
+                            <li class="nav-item ms-auto">
+                                <a class="btn btn-danger text-white fw-bold px-3 shadow-sm rounded-pill ms-3"
+                                   style="font-size: 0.9rem;"
+                                   asp-controller="Account" asp-action="Login">
+                                    🔒 Admin Girişi
+                                </a>
+                            </li>
+                        }
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted mt-5">
+        <div class="container text-center py-3">
+            &copy; 2025 - KnudarrFit Gym Üye Takip Sistemi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Gizlilik Politikası</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,158 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@model SporSalonuTakip.Models.Member
+
+@{
+    ViewData["Title"] = "Yeni Üye Kaydı";
+    bool isAdmin = HttpContextAccessor.HttpContext.Session.GetString("UserRole") == "Admin";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+
+                <div class="card-header bg-primary p-4 text-center text-white">
+                    <h3 class="mb-0 fw-bold">
+                        @(isAdmin ? "⚙️ Yönetici / Üye Ekleme Paneli" : "🚀 Aramıza Hoş Geldin!")
+                    </h3>
+                    <p class="mb-0 opacity-75">
+                        @(isAdmin ? "Manuel olarak yeni bir üye kaydı oluşturun." : "Formu doldurarak üyeliğini hemen başlat.")
+                    </p>
+                </div>
+
+                <div class="card-body p-5 bg-white">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="bg-light p-4 rounded-3 border border-primary border-opacity-25 mb-4 position-relative overflow-hidden">
+                            <div style="position: absolute; right: -20px; top: -20px; font-size: 100px; opacity: 0.1; color: var(--bs-primary);">
+                                🎫
+                            </div>
+
+                            <h5 class="fw-bold text-primary mb-3">Seçilen Paket Bilgileri</h5>
+
+                            <div class="row g-3">
+                                <div class="col-md-8">
+                                    <label asp-for="PlanType" class="form-label text-muted small fw-bold">PAKET TÜRÜ</label>
+                                    @if (isAdmin)
+                                    {
+                                        <select asp-for="PlanType" id="PlanSelect" class="form-select form-select-lg fw-bold border-primary shadow-sm">
+                                            <option value="Aylık Standart">Aylık Standart</option>
+                                            <option value="3 Aylık İndirimli">3 Aylık İndirimli</option>
+                                            <option value="Yıllık Gold">Yıllık Gold</option>
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-white border-end-0">📦</span>
+                                            <input asp-for="PlanType" class="form-control form-control-lg bg-white border-start-0 fw-bold text-dark" readonly />
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label asp-for="Price" class="form-label text-muted small fw-bold">TUTAR (TL)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-success text-white border-0">₺</span>
+                                        @if (isAdmin)
+                                        {
+                                            <input asp-for="Price" id="PriceInput" class="form-control form-control-lg border-success fw-bold text-success" />
+                                        }
+                                        else
+                                        {
+                                            <input asp-for="Price" class="form-control form-control-lg bg-white border-success fw-bold text-success" readonly />
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="fw-bold text-dark mb-3">Kişisel Bilgiler</h5>
+
+                        <div class="mb-3">
+                            <label asp-for="FullName" class="form-label fw-bold">Ad Soyad</label>
+                            <div class="input-group input-group-lg shadow-sm">
+                                <span class="input-group-text bg-light text-secondary">👤</span>
+                                <input asp-for="FullName" class="form-control" placeholder="Örn: Ahmet Yılmaz" />
+                            </div>
+                            <span asp-validation-for="FullName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PhoneNumber" class="form-label fw-bold">Telefon Numarası</label>
+                            <div class="input-group input-group-lg shadow-sm">
+                                <span class="input-group-text bg-light text-secondary">📱</span>
+                                <input asp-for="PhoneNumber" class="form-control" placeholder="Örn: 555 123 45 67" />
+                            </div>
+                            <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="StartDate" class="form-label fw-bold">Başlangıç Tarihi</label>
+                            <div class="input-group input-group-lg shadow-sm">
+                                <span class="input-group-text bg-light text-secondary">📅</span>
+                                <input asp-for="StartDate" class="form-control" />
+                            </div>
+                            <span asp-validation-for="StartDate" class="text-danger small"></span>
+                        </div>
+
+                        <input type="hidden" asp-for="IsActive" value="true" />
+
+                        <div class="d-grid gap-3 mt-5">
+                            <button type="submit" class="btn btn-primary btn-lg py-3 rounded-pill shadow fw-bold transition-hover">
+                                ✅ Kaydı Tamamla ve Başla
+                            </button>
+
+                            @if (!isAdmin)
+                            {
+                                <a asp-action="Plans" class="btn btn-light text-muted border-0">
+                                    ← Paket Seçimine Dön
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-action="Index" class="btn btn-light text-muted border-0">
+                                    ← Listeye Dön
+                                </a>
+                            }
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    @if (isAdmin)
+    {
+        <script>
+            const prices = {
+                "Aylık Standart": 3000,
+                "3 Aylık İndirimli": 7000,
+                "Yıllık Gold": 30000
+            };
+            const planSelect = document.getElementById("PlanSelect");
+            const priceInput = document.getElementById("PriceInput");
+
+            planSelect.addEventListener("change", function() {
+                const selectedPlan = this.value;
+                if (prices[selectedPlan]) {
+                    priceInput.value = prices[selectedPlan];
+                }
+            });
+
+            if(priceInput.value == "" || priceInput.value == "0") {
+                 priceInput.value = prices[planSelect.value];
+            }
+        </script>
+    }
+}

@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Yağ Yakımı Programı";
+}
+
+<div class="container mt-5 mb-5">
+
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-danger">🔥 HIIT & Yağ Yakımı</h1>
+        <p class="lead text-muted">Nabzı yüksek tutarak maksimum kalori yakımı sağlayan yüksek yoğunluklu antrenman.</p>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm mt-2">← Programlara Dön</a>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow border-0">
+                <div class="card-header bg-danger text-white py-3">
+                    <h4 class="mb-0 fw-bold">1. Bölüm: Kardiyo Başlangıcı</h4>
+                    <small>Nabzı Yükseltme</small>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>Bench Skip</strong>
+                            <div class="text-muted small">Step tahtası veya bench üzerinde seri adımlama</div>
+                        </div>
+                        <span class="badge bg-danger rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                        <div>
+                            <strong>🏃 Koşu (Treadmill)</strong>
+                            <div class="text-muted small">Orta-Yüksek Tempo</div>
+                        </div>
+                        <span class="badge bg-dark rounded-pill">15 Dakika</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>🚴 Bisiklet (Cycling)</strong>
+                            <div class="text-muted small">Sabit tempo veya interval</div>
+                        </div>
+                        <span class="badge bg-dark rounded-pill">15 Dakika</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow border-0">
+                <div class="card-header bg-dark text-white py-3">
+                    <h4 class="mb-0 fw-bold">2. Bölüm: Güç & Direnç</h4>
+                    <small>Vücut Ağırlığı ve Ekipman</small>
+                </div>
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Vertical Jump (Dikey Sıçrama)</strong>
+                        <span class="badge bg-danger rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Jump Squat (Sıçrayarak Çökme)</strong>
+                        <span class="badge bg-danger rounded-pill">2 Set x 12 Tekrar</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                        <strong>Bodyweight Squat (Kendi Ağırlığın)</strong>
+                        <span class="badge bg-secondary rounded-pill">1 Set x 8 Tekrar</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Lightweight Goblet Squat</strong>
+                        <span class="badge bg-secondary rounded-pill">1 Set x 8 Tekrar</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-top border-3 border-danger">
+                        <div>
+                            <strong>💣 Kettlebell Swing</strong>
+                            <div class="text-muted small">Patlayıcı kalça hareketi</div>
+                        </div>
+                        <span class="badge bg-danger rounded-pill">3 Set x 8 Tekrar</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="alert alert-warning mt-4 text-center shadow-sm" role="alert">
+        <h5 class="alert-heading fw-bold">⚠️ Önemli Hatırlatma</h5>
+        <p class="mb-0">
+            Hareketler arasında dinlenme süresini <strong>kısa tutun (30-45 saniye)</strong>. Amaç nabzı düşürmeden yağ yakım bölgesinde kalmaktır. Bol su içmeyi unutmayın!
+        </p>
+    </div>
+
+</div>

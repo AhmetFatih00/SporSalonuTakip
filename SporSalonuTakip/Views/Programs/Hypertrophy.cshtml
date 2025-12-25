@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Hypertrophy Programı";
+}
+
+<div class="container mt-5 mb-5">
+
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary">🔥 Hypertrophy (Kas İnşası)</h1>
+        <p class="lead text-muted">Hacim kazanmak ve kas kütlesini artırmak için optimize edilmiş 4 günlük split antrenman.</p>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm mt-2">← Programlara Dön</a>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h4 class="mb-0 fw-bold">1. Gün: PUSH (İtiş)</h4>
+                    <small>Göğüs, Omuz, Arka Kol</small>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Bench Press</strong>
+                        <span class="badge bg-primary rounded-pill">2 Set x 8 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Chest Fly (Kelebek)</strong>
+                        <span class="badge bg-primary rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Dumbbell Shoulder Press</strong>
+                        <span class="badge bg-primary rounded-pill">3 Set x 8 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Military Press</strong>
+                        <span class="badge bg-primary rounded-pill">2 Set x 8 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                        <strong>Triceps Pushdown</strong>
+                        <span class="badge bg-dark rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow border-0">
+                <div class="card-header bg-danger text-white py-3">
+                    <h4 class="mb-0 fw-bold">2. Gün: PULL (Çekiş)</h4>
+                    <small>Sırt, Kanat, Ön Kol</small>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Lat Pulldown</strong>
+                        <span class="badge bg-danger rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Pull-Up (Barfiks)</strong>
+                        <span class="badge bg-danger rounded-pill">2 Set x 8 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Hammer Curl</strong>
+                        <span class="badge bg-danger rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Chin-Up</strong>
+                        <span class="badge bg-danger rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                        <strong>Dumbbell Curl</strong>
+                        <span class="badge bg-dark rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow border-0">
+                <div class="card-header bg-success text-white py-3">
+                    <h4 class="mb-0 fw-bold">3. Gün: LEGS (Bacak)</h4>
+                    <small>Ön Bacak, Arka Bacak, Kalça</small>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Squat</strong>
+                        <span class="badge bg-success rounded-pill">2 Set x 8 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Leg Curl</strong>
+                        <span class="badge bg-success rounded-pill">2 Set x 12 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Leg Press</strong>
+                        <span class="badge bg-success rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Bulgarian Split Squat</strong>
+                        <span class="badge bg-success rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow border-0">
+                <div class="card-header bg-warning text-dark py-3">
+                    <h4 class="mb-0 fw-bold">4. Gün: ABS & CALF</h4>
+                    <small>Karın ve Kalf Kasları</small>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Calf Raise</strong>
+                        <span class="badge bg-warning text-dark rounded-pill">2 Set x 12 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Smith Machine Calf Raise</strong>
+                        <span class="badge bg-warning text-dark rounded-pill">3 Set x 12 Tekrar</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Plank</strong>
+                        <span class="badge bg-dark rounded-pill">3 Set x 30 Saniye</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Mekik (Crunches)</strong>
+                        <span class="badge bg-danger rounded-pill">3 Set x Failure (Tükeniş)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="alert alert-info mt-4 d-flex align-items-center" role="alert">
+        <span class="fs-4 me-3">💡</span>
+        <div>
+            <strong>İpucu:</strong> Hareketler arasında 60-90 saniye dinlenin. Ağırlıkları her hafta düzenli olarak artırmaya çalışın (Progressive Overload).
+        </div>
+    </div>
+
+</div>
