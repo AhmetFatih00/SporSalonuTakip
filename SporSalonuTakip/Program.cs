@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SporSalonuTakip.Data;
-
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 var builder = WebApplication.CreateBuilder(args);
 
 // 1. SERVÝSLERÝ EKLEME BÖLÜMÜ
